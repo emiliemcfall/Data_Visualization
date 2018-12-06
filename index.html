@@ -9,9 +9,12 @@
 
   <title>Chicago Crime Analysis</title>
 
-  <!-- Mapbox GL JS -->
+  <!-- Mapbox GL JS and D3 -->
+  <script src='https://d3js.org/d3.v4.min.js'></script>
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='js/chicagoBorders.js'></script>
+
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/css.css" media="Screen"/>
 </head>
@@ -127,6 +130,56 @@
   <br>
 </section>
 
+<script>
+
+var width = 900,
+height = 680;
+
+var svg = d3.select('body')
+.append('svg')
+.attr('width', width)
+.attr('height', height);
+
+var g = svg.append('g');
+
+var albersProjection = d3.geoAlbers()
+.scale(55000)
+.rotate([87.71, 0])
+.center([0, 41.99])
+.translate([width/3.5, height/3.5]);
+
+var geoPath = d3.geoPath()
+.projection(albersProjection);
+
+var color = d3.scaleQuantile()
+.range(["rgb(237, 248, 233)", "rgb(186, 228, 179)", "rgb(116,196,118)", "rgb(49,163,84)", "rgb(0,109,44)"]);
+
+// sæt ind her
+
+g.selectAll('path')
+.data(chicago_json.features)
+.enter()
+.append('path')
+.attr('fill', '#ccc')
+.attr('d', geoPath)
+.style("fill", function(d){
+  //get the data value
+  var value = d.properties.value;
+
+  if(value){
+    //If value exists
+    return color(value);
+  } else {
+    //If value is undefined
+    //we do this because alaska and hawaii are not in dataset we are using but still in projections
+    return "#ccc"
+  }
+
+});
+
+</script>
+
+
 <!-- Next Steps... -->
 
 <section id="nextsteps" class="homeScreen">
@@ -153,6 +206,7 @@
 <script src="js/particle.js"></script>
 <script src="js/js.js"></script>
 <script src="js/chicagoMap.js"></script>
+<!-- <script src='js/chicagoBorders.js'></script> -->
 
 </body>
 </html>
