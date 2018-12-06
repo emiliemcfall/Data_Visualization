@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Data Vis COM 480"/>
+  <meta name="author" content="Shruti Goli, Pernille Samsoee, Emilie McFall"/>
+
+  <title>Chicago Crime Analysis</title>
+
+  <!-- Mapbox GL JS -->
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/css.css" media="Screen"/>
+</head>
+<body data-spy="scroll" data-target=".navbar">
+<style>
+  #menu {
+    background: #fff;
+    position: relative;
+    z-index: 1;
+    top: 90px;
+    right: -860px;
+    border-radius: 3px;
+    width: 120px;
+    border: 1px solid rgba(0,0,0,0.4);
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  #menu a {
+    font-size: 13px;
+    color: #404040;
+    display: block;
+    margin: 0;
+    padding: 0;
+    padding: 10px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    text-align: center;
+  }
+
+  #menu a:last-child {
+    border: none;
+  }
+
+  #menu a:hover {
+    background-color: #f8f8f8;
+    color: #404040;
+  }
+
+  #menu a.active {
+    background-color: #3887be;
+    color: #ffffff;
+  }
+
+  #menu a.active:hover {
+    background: #3074a4;
+  }
+  .mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  }
+</style>
+
+<!-- Intro -->
+<div id="particles"></div>
+
+<!-- Navigation -->
+<nav class="nav navbar navbar-default" id="sticker">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" id="hamburger-menu" class="navbar-toggle hamburger" data-toggle="collapse" data-target="#navbarTop" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="navbarTop">
+        <ul class="nav navbar-nav">
+          <li><a href="#home" id="homepage">Home</a></li>
+          <li><a href="#data">Data Analysis</a></li>
+          <li><a href="#design">Design Analysis</a></li>
+          <li><a href="#nextsteps">Next Steps</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<section id="home" class="homeScreen">
+  <div id="intro">
+    <h1>Chicago Crime Analysis</h1>
+    <br><hr><br>
+    <h2>Data Visualization COM 480</h2>
+    <h2>Shruti Goli, Pernille Samsoee, Emilie McFall </h2>
+  </div>
+</section>
+
+
+<!-- Data Analysis Portion -->
+<section id="data" class="homeScreen vertical-center">
+  <div class="centered-text">
+    <h1> Exploratory <span> Data Analysis</span></h1>
+
+    <br>
+    <br>
+
+    <p>We have our 300 word description and a python notebook with all of our calculations and correlations so far. <br>
+      Please click <a href="https://github.com/PernilleLindvang/COM480-ExploratoryAnalysis" target="_blank">here</a> to view!<br>
+    </p>
+  </div>
+</section>
+
+<!-- Design Analysis Portion -->
+
+<section id="design" class="homeScreen">
+  <h1>Design <span>Analysis</span></h1>
+  <br>
+  <br>
+  <p>We have our 300 word description to discuss our design in further detail. <br>
+    Please click <a href="prototype.pdf" target="_blank" class="class1">here</a> to view!<br>
+  </p>
+  <br>
+</section>
+
+<!-- Next Steps... -->
+
+<section id="nextsteps" class="homeScreen">
+  <div class='map-overlay top' style='margin-top: -50px; margin-left: 50px'>
+    <h1>Our <span>next steps...</span></h1>
+    <br>
+    <br>
+    <p>We plan to continue working on this website and update our visualizations as we go along.
+      <br>
+      <br>
+      We will also continue to think of other factors that may impact the crime rate and look for
+      both a <span>statistical correlation</span> and <span>visual representation</span> of the data to easily understand.
+    </p>
+  </div>
+  <nav id='menu'></nav>
+  <div id='map' style='width: 80vw; height: 80vh;'></div>
+</section>
+
+
+<!-- JS -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.sticky.js"></script>
+<script src="js/particle.js"></script>
+<script src="js/js.js"></script>
+<script src="js/chicagoMap.js"></script>
+
+</body>
+</html>
