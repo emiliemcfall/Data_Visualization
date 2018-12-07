@@ -50,7 +50,7 @@ map.on('load', function () {
   //   }
   // });
 
-  
+
 
   // Police stations
   map.addSource("police-stations", {
